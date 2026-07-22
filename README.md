@@ -2,6 +2,8 @@
 
 Agent skills for Claude Code — and a maintained port of the big ones to OpenAI Codex.
 
+[简体中文](README.zh-CN.md)
+
 ## Install
 
 With [`npx skills`](https://github.com/vercel-labs/skills) — pick from the list interactively:

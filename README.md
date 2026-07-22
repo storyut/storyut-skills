@@ -100,6 +100,12 @@ Layout of a skill:
 - The Codex port is actively kept in sync with the Claude Code originals; known intentional divergences are listed in [`fablely-skill-codex/README.md`](fablely-skill-codex/README.md).
 - `.claude-plugin/marketplace.json` declares the two fablely families so `npx skills` can find them. The CLI walks the repo root only one level deep, so skills nested at `fablely-skill/<name>/` are invisible without it. Paths in that file **must** start with `./`, or the CLI silently skips the whole manifest.
 
+## Versioning
+
+Released as git tags, one version for the whole repo. A major bump means something outside this repo breaks: either the `.fable/` schema changed, so projects mid-flight need migrating, or a skill was renamed or removed, so installs and `--skill` invocations pointing at the old name stop resolving. Minor adds a skill or new behaviour. Patch is prose.
+
+Pin a tag if you care about that; `master` moves.
+
 ## License
 
 [MIT](LICENSE). Take it, fork it, cut the parts you disagree with.

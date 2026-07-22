@@ -100,6 +100,12 @@ fablely 的整个前提是项目状态存在磁盘上，不在上下文窗口里
 - Codex 移植版在持续跟原版同步；已知的有意差异列在 [`fablely-skill-codex/README.md`](fablely-skill-codex/README.md)。
 - `.claude-plugin/marketplace.json` 声明了这两套 fablely，`npx skills` 才找得到它们。这个 CLI 只往 repo 根目录下走一层，所以嵌在 `fablely-skill/<name>/` 里的 skill 不声明就是隐形的。文件里的路径**必须**以 `./` 开头，否则 CLI 会一声不吭地跳过整份清单。
 
+## 版本
+
+用 git tag 发版，整个 repo 共用一个版本号。大版本号变了，意味着这个 repo 之外有东西被弄坏了：要么 `.fable/` 的格式改了，做到一半的项目得迁移；要么某个 skill 被改名或删掉了，指着旧名字的安装和 `--skill` 参数会解析不到。次版本号是加了 skill 或者加了新行为。修订号就是改文字。
+
+在意这个的话就 pin 一个 tag，`master` 是会动的。
+
 ## 许可
 
 [MIT](LICENSE)。拿去用，随便 fork，看不顺眼的部分直接砍掉。

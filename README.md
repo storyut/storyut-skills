@@ -1,8 +1,8 @@
 # storyut-skills
 
-Agent skills for Claude Code, plus a maintained port of the big ones to OpenAI Codex.
+[![version](https://img.shields.io/github/v/tag/storyut/storyut-skills?label=version)](https://github.com/storyut/storyut-skills/tags) [简体中文](README.zh-CN.md)
 
-[简体中文](README.zh-CN.md)
+Agent skills for Claude Code, plus a maintained port of the big ones to OpenAI Codex.
 
 ## Install
 

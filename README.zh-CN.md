@@ -1,8 +1,8 @@
 # storyut-skills
 
-给 Claude Code 用的 agent skills，外加一份持续维护的 OpenAI Codex 移植版。
+[![version](https://img.shields.io/github/v/tag/storyut/storyut-skills?label=version)](https://github.com/storyut/storyut-skills/tags) [English](README.md)
 
-[English](README.md)
+给 Claude Code 用的 agent skills，外加一份持续维护的 OpenAI Codex 移植版。
 
 ## 安装
 

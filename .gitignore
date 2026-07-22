@@ -1,0 +1,12 @@
+# Private working layer — not part of the published skill library
+/AGENTS.md
+/.claude/
+progress.md
+
+# Personal disk-scan output — machine paths, not part of the skill
+wiztree-cleaner/exports/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.bak.*

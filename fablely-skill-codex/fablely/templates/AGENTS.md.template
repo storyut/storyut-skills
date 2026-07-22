@@ -1,0 +1,23 @@
+# {{PROJECT_NAME}}
+
+{{ONE_LINE_MISSION}}
+
+## Project contract (fablely)
+
+This project's memory lives in `.fable/`. It is only useful if it is true. Nothing enforces the rules below mechanically — this contract is the enforcement.
+
+- At the start of every session: load the `fablely` skill and read `.fable/PROGRESS.md`. Check its recorded branch and SHA against actual git state before trusting it; if they disagree, the file is stale — re-derive state and rewrite it first.
+- Size every request before acting. Consult/read-only requests need no stamp. For changes, declare the size in `.fable/.intent` before the first edit: Trivial uses one `trivial:` line; Small uses Goal, Check first, Touches, and Done when; Medium+ uses `.fable/work/NNN-slug.md` through `fablely-spec`.
+- Never edit a file you haven't read this session. Preserve unexplained local changes and honor explicit path allowlists.
+- An explicit mutation allowlist that excludes `.fable/` overrides the persistence rules above: keep existing fablely context read-only, make no `.fable/.intent` or memory writes, perform only otherwise-authorized work inside the allowlist, and report that continuity could not be recorded.
+- `.fable/STANDARDS.md` is this project's quality bar. Read it before designing, not after writing the diff. A Small intent's `Done when` names the clause IDs at risk; a work unit answers them in its Clears-the-bar block; an implementation brief to a subagent pastes the clause text in as a hard requirement.
+- An open standards finding blocks completion: no `done`, no checkpoint commit, until it is fixed or waived by a DECISIONS.md entry naming the clause and the reason. Never edit a clause to make a failing change pass.
+- Before ending any session that changed files: update `.fable/PROGRESS.md` — current state, in-flight work, one next action, expected local changes, and the git checkpoint or non-git status.
+- Record decisions in `.fable/DECISIONS.md` and corrections, dead ends, and lying tests in `.fable/LESSONS.md` at the moment they happen, not at session end.
+- Report claims at the strength of their evidence. "Tests pass" is not "the feature works" — only driving the flow and observing behavior is.
+
+## Git
+
+- Branch, commit, and push only when the user or established repository workflow authorizes them. Never include unrelated dirty work.
+- When checkpoint commits are authorized, use:
+  `checkpoint(NNN): <outcome>`

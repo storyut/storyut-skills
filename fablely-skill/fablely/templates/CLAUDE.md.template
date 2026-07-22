@@ -1,0 +1,20 @@
+# {{PROJECT_NAME}}
+
+{{ONE_LINE_MISSION}}
+
+## Project contract (fablely)
+
+This project keeps resumable state in `.fable/` because chat context can be interrupted or compacted.
+
+- At session start, invoke `fablely` and read `.fable/PROGRESS.md`. Verify its branch, SHA, and expected local changes before relying on it.
+- Read-only Consult work needs no intent. Before changing files, write `.fable/.intent`: `trivial:` for mechanical work, a four-line Small intent for contained work, or `unit: NNN <slug>` for a work unit.
+- `.fable/STANDARDS.md` is this project's quality bar. Read it before designing, not after writing the diff. A Small intent's `Done when` names the clause IDs at risk; a work unit answers them in its Clears-the-bar block; an implementation brief to a subagent pastes the clause text in as a hard requirement.
+- An open standards finding blocks completion: no `done`, no checkpoint commit, until it is fixed or waived by a DECISIONS.md entry naming the clause and the reason. Never edit a clause to make a failing change pass.
+- Read targets before editing. Preserve unexplained local changes and explicit path boundaries; an allowlist excluding `.fable/` also excludes continuity metadata.
+- Update `.fable/PROGRESS.md` before ending a turn that changed project files: current truth, evidence, in-flight work, one next action, expected local changes, and checkpoint or non-git status.
+- Record durable rationale in DECISIONS and corrections/dead ends in LESSONS when discovered.
+- Use subagents only for independent work that benefits from isolated context and only when permitted. Keep simple edits and final verification in the main agent.
+- Use git mutations only when the user or repository workflow authorizes them. Keep unrelated dirty work out of commits.
+- Phrase outcomes at their evidence level: observed behavior, red/green, targeted passing checks, static inspection, or unverified.
+
+Hooks enforce the direct Edit/Write intent gate and the PROGRESS-before-stop backstop. They do not expand task authority.

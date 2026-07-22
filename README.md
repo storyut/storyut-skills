@@ -2,10 +2,6 @@
 
 Agent skills for Claude Code — and a maintained port of the big ones to OpenAI Codex.
 
-These are small, hackable text files, not a framework. Each skill is one `SKILL.md`: YAML frontmatter that tells the agent *when* to fire, and instructions that tell it *what process to follow*. You are meant to read them, disagree with them, and edit them.
-
-The design goal throughout is **predictability of process**, not identical output. A good skill makes the agent take the same steps every run — the answer can differ, the method shouldn't.
-
 ## Install
 
 There is no installer and no build. Copy the directories you want into your skills folder:
@@ -45,7 +41,15 @@ fablely fixes that by keeping truthful state on disk in a `.fable/` directory, u
 
 Projects get a `.fable/STANDARDS.md` — the quality bar as numbered clauses (`SEC-1`, `ERR-2`) that are referenced while the work is being *designed*, not applied as a gate afterward. An open finding blocks the unit until it's fixed or waived by an auditable `DECISIONS.md` entry.
 
-Claude Code and Codex versions share a frozen `.fable/` format, so a project bootstrapped by one harness resumes cleanly under the other.
+#### Why there's a Codex port
+
+Because continuity that only survives inside one vendor's tool isn't continuity.
+
+The whole premise of fablely is that project state lives **on disk**, not in a context window — that's what lets a fresh session pick up where the last one died. But if that state is only legible to Claude Code, you've just moved the amnesia one level up: switch to Codex for a session and you're back to re-deriving what was already decided. Models also change, and harnesses come and go faster than the projects they're used on.
+
+So `.fable/` is treated as a **frozen, harness-neutral format**, and both ports read and write it identically. A project bootstrapped by Claude Code resumes cleanly under Codex and vice versa — you can switch mid-project, or use whichever one is better at the task in front of you, without losing the thread.
+
+What differs is only what has to. The Codex port is restructured for GPT-5.6 (outcome-first, decision rules over scaffolding, roughly a third shorter), and Codex has no lifecycle hooks, so guarantees that ride on hooks in Claude Code ride on `AGENTS.md` prose instead. Behaviour is ported; wording isn't. The divergences are deliberate and [documented](fablely-skill-codex/README.md).
 
 ### Writing and thinking
 
@@ -86,5 +90,8 @@ Layout of a skill:
 ## Notes
 
 - The fablely skills are grouped under `fablely-skill/` (Claude Code) and `fablely-skill-codex/` (Codex); the standalone skills sit at the repo root.
-- Everything is MIT-ish in spirit: take it, fork it, cut the parts you disagree with.
 - The Codex port is actively kept in sync with the Claude Code originals; known intentional divergences are listed in [`fablely-skill-codex/README.md`](fablely-skill-codex/README.md).
+
+## License
+
+[MIT](LICENSE) — take it, fork it, cut the parts you disagree with.

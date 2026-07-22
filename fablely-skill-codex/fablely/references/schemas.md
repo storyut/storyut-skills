@@ -158,7 +158,7 @@ Rules: when files are added, moved, or removed, regenerate the whole file from t
 
 ## work/NNN-slug.md
 
-Purpose: one self-contained unit of work — design, spec, and plan together — written by the fablely-spec skill.
+Purpose: one self-contained unit of work — design, spec, and plan together — written by the fablely-spec-codex skill.
 
 ```markdown
 # NNN — <name>
@@ -182,7 +182,7 @@ satisfies it, and how a reviewer will check. "Not at risk" for the rest.
 ## Plan
 
 Bite-sized checkbox steps, test-first, exact paths, exact commands, expected
-output — task structure per fablely-spec's references/plan-format.md.
+output — task structure per fablely-spec-codex's references/plan-format.md.
 
 ## Completion
 
@@ -202,7 +202,7 @@ Rules: `NNN` is the next unused zero-padded number starting from `001`. The stan
 
 ## research/slug.md
 
-Purpose: findings from one investigation of facts outside the tree — library behavior, API contracts, prior art — written via fablely-spec's research pattern, cited from work files' Design sections.
+Purpose: findings from one investigation of facts outside the tree — library behavior, API contracts, prior art — written via fablely-spec-codex's research pattern, cited from work files' Design sections.
 
 ```markdown
 # <question investigated>

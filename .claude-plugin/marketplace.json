@@ -1,0 +1,15 @@
+{
+  "name": "storyut-skills",
+  "plugins": [
+    {
+      "name": "fablely",
+      "source": "./fablely-skill",
+      "skills": ["./fablely", "./fablely-spec", "./fablely-arch", "./fablely-ask", "./fablely-debug"]
+    },
+    {
+      "name": "fablely-codex",
+      "source": "./fablely-skill-codex",
+      "skills": ["./fablely", "./fablely-spec", "./fablely-arch", "./fablely-ask", "./fablely-debug"]
+    }
+  ]
+}

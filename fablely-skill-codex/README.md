@@ -1,15 +1,18 @@
 # fablely for Codex (GPT-5.6)
 
-A port of the `fablely` and `fablely-spec` Claude Code skills to OpenAI Codex, restructured per OpenAI's GPT-5.6 prompting guidance (outcome-first, leaner, decision rules over scaffolding).
+A port of the `fablely` family of Claude Code skills to OpenAI Codex, restructured per OpenAI's GPT-5.6 prompting guidance (outcome-first, leaner, decision rules over scaffolding).
+
+The five skills are published under `-codex`-suffixed names — `fablely-codex`, `fablely-spec-codex`, `fablely-arch-codex`, `fablely-ask-codex`, `fablely-debug-codex` — so they can be installed alongside the Claude Code originals without colliding. The `.fable/` directory format is identical either way.
 
 ## Install
 
-1. Copy both skill directories into Codex's skills folder:
+1. Install the family:
 
+   ```bash
+   npx skills add storyut/storyut-skills --skill 'fablely-codex,fablely-spec-codex,fablely-arch-codex,fablely-ask-codex,fablely-debug-codex'
    ```
-   ~/.codex/skills/fablely/
-   ~/.codex/skills/fablely-spec/
-   ```
+
+   Or copy the five skill directories into `~/.codex/skills/` by hand.
 
 2. (Recommended) Enable subagents so fablely can run its orchestrator/fresh-eyes-reviewer workflow. In `~/.codex/config.toml`:
 
@@ -20,7 +23,7 @@ A port of the `fablely` and `fablely-spec` Claude Code skills to OpenAI Codex, r
 
    Without this, fablely still works — it falls back to inline implementation with a spec-vs-diff self-review instead of a reviewer subagent.
 
-3. Invoke with `/fablely` in a project directory (or `/fablely-spec` to spec a unit of work directly). Projects bootstrapped by fablely get an `AGENTS.md` that tells every future Codex session to load the skill and read `.fable/PROGRESS.md` automatically.
+3. Invoke with `/fablely-codex` in a project directory (or `/fablely-spec-codex` to spec a unit of work directly). Projects bootstrapped by fablely get an `AGENTS.md` that tells every future Codex session to load the skill and read `.fable/PROGRESS.md` automatically.
 
 ## What changed from the Claude Code version
 

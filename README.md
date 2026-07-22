@@ -4,22 +4,27 @@ Agent skills for Claude Code — and a maintained port of the big ones to OpenAI
 
 ## Install
 
-There is no installer and no build. Copy the directories you want into your skills folder:
+With [`npx skills`](https://github.com/vercel-labs/skills) — pick from the list interactively:
+
+```bash
+npx skills add storyut/storyut-skills
+```
+
+Or take specific ones, globally instead of per-project:
+
+```bash
+npx skills add storyut/storyut-skills --skill 'tldr,brew' --global
+```
+
+All 18 skills are exposed, including both fablely families. The Codex port is published under `-codex`-suffixed names (`fablely-codex`, `fablely-spec-codex`, …) so it installs alongside the Claude Code originals without colliding.
+
+There is also no installer needed — the files are the product, so cloning and copying works just as well:
 
 ```bash
 git clone https://github.com/storyut/storyut-skills.git
-
-# Claude Code — user-wide
 cp -r storyut-skills/tldr ~/.claude/skills/
-cp -r storyut-skills/brew ~/.claude/skills/
-
-# ...or per-project
-cp -r storyut-skills/fablely-skill/fablely .claude/skills/
+cp -r storyut-skills/fablely-skill/fablely .claude/skills/   # fablely lives one level down
 ```
-
-Note the fablely skills live one level down, in `fablely-skill/` — copy the individual skill directories out of it, not the folder itself.
-
-For Codex, copy from `fablely-skill-codex/` into `~/.codex/skills/` instead — see [`fablely-skill-codex/README.md`](fablely-skill-codex/README.md).
 
 Invoke a skill by typing its name as a slash command (`/tldr`, `/brew`), or just describe the task and let the agent pick it up from the `description` field.
 
@@ -91,6 +96,7 @@ Layout of a skill:
 
 - The fablely skills are grouped under `fablely-skill/` (Claude Code) and `fablely-skill-codex/` (Codex); the standalone skills sit at the repo root.
 - The Codex port is actively kept in sync with the Claude Code originals; known intentional divergences are listed in [`fablely-skill-codex/README.md`](fablely-skill-codex/README.md).
+- `.claude-plugin/marketplace.json` declares the two fablely families so `npx skills` can find them. The CLI walks the repo root only one level deep, so skills nested at `fablely-skill/<name>/` are invisible without it. Paths in that file **must** start with `./` — the CLI silently skips the whole manifest otherwise.
 
 ## License
 

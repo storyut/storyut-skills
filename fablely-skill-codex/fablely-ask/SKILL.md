@@ -1,9 +1,9 @@
 ---
-name: fablely-ask
-description: "Answer a read-only question about a project that has a `.fable/` directory — how something works, why it is shaped that way, what the current state is, or what an external library actually does. Use for fablely's Consult lane: the answer is words, not edits. Do not use when the request is to change something, and do not use in a project without `.fable/`; the standalone `/ask` skill covers questions everywhere else."
+name: fablely-ask-codex
+description: "Codex port. Answer a read-only question about a project that has a `.fable/` directory — how something works, why it is shaped that way, what the current state is, or what an external library actually does. Use for fablely's Consult lane: the answer is words, not edits. Do not use when the request is to change something, and do not use in a project without `.fable/`; the standalone `/ask` skill covers questions everywhere else."
 ---
 
-# fablely-ask
+# fablely-ask-codex
 
 ## Goal
 

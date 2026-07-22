@@ -26,7 +26,7 @@ created: YYYY-MM-DD
 <!-- Light form (one or two files, one obvious shape): a flat checkbox list,
      ending on the command that proves it. Delete the Task scaffold below.
 
-     Full form: tasks per fablely-spec's references/plan-format.md — Files,
+     Full form: tasks per fablely-spec-codex's references/plan-format.md — Files,
      Interfaces, then 2-5 minute checkbox steps — test first, exact command,
      expected output. No placeholders. -->
 

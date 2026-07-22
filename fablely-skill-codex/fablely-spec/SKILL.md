@@ -1,15 +1,15 @@
 ---
-name: fablely-spec
-description: Use when a project with a .fable/ directory needs a unit of work designed and specced — a non-trivial request with no covering file in .fable/work/ — or when the user asks to grill or spec a piece of work with /fablely-spec.
+name: fablely-spec-codex
+description: Codex port. Use when a project with a .fable/ directory needs a unit of work designed and specced — a non-trivial request with no covering file in .fable/work/ — or when the user asks to grill or spec a piece of work with /fablely-spec-codex.
 ---
 
-# fablely-spec
+# fablely-spec-codex
 
 ## Goal
 
 One job: turn a fuzzy unit of work into one settled file, `.fable/work/NNN-slug.md`, holding the design, the spec, and the implementation plan together. You grill; you do not execute.
 
-You're invoked by fablely's triage when a Medium+ request has no covering work file, or directly by the user via `/fablely-spec`. Either way, the work isn't real until it's written down and agreed to — not before.
+You're invoked by fablely's triage when a Medium+ request has no covering work file, or directly by the user via `/fablely-spec-codex`. Either way, the work isn't real until it's written down and agreed to — not before.
 
 ## Scale the artifact to the risk
 
@@ -64,11 +64,11 @@ In full form it contains, in order (light form collapses 2–5 as above):
 
 Design, spec, and plan live in one file deliberately — split across files they drift into contradicting each other the first time either one gets edited alone.
 
-The full schema is in the fablely skill's `references/schemas.md`. Follow it exactly; this document describes the shape, that file is the source of truth for field names and formatting.
+The full schema is in the `fablely-codex` skill's `references/schemas.md`. Follow it exactly; this document describes the shape, that file is the source of truth for field names and formatting.
 
 ## Handoff
 
-Once the file is written and the user has confirmed it, your job is done. Execution belongs to the fablely skill's work unit lifecycle — load-and-critique, step-by-step execution, review against the Spec and the standards bar, then the checkpoint commit: one per completed work unit, tests green, standards axis clear, never on the default branch, never pushed.
+Once the file is written and the user has confirmed it, your job is done. Execution belongs to the `fablely-codex` skill's work unit lifecycle — load-and-critique, step-by-step execution, review against the Spec and the standards bar, then the checkpoint commit: one per completed work unit, tests green, standards axis clear, never on the default branch, never pushed.
 
 You do not implement anything yourself. If you find your hands moving toward an edit while specced work is still open, stop — that's the execution phase's job, not yours.
 

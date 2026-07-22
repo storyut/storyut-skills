@@ -1,9 +1,9 @@
 ---
-name: fablely
-description: Project-continuity workflow backed by a `.fable/` directory. Use when a project already contains `.fable/`, its AGENTS.md directs agents to `.fable/PROGRESS.md`, or the user explicitly asks to bootstrap or adopt fablely for a multi-session project. Also use to recover stale project state after interruption or compaction. Do not auto-adopt an ordinary repository merely because work begins there.
+name: fablely-codex
+description: Codex port of the fablely project-continuity workflow backed by a `.fable/` directory. Use when a project already contains `.fable/`, its AGENTS.md directs agents to `.fable/PROGRESS.md`, or the user explicitly asks to bootstrap or adopt fablely for a multi-session project. Also use to recover stale project state after interruption or compaction. Do not auto-adopt an ordinary repository merely because work begins there.
 ---
 
-# fablely
+# fablely-codex
 
 ## Goal
 
@@ -37,11 +37,11 @@ After activation, classify the deliverable—not the wording:
 
 | Size | Deliverable | Protocol |
 |---|---|---|
-| **Consult** | Read-only answer, explanation, or investigation | Answer through `fablely-ask`. Run drift detection only when the answer depends on current project state. Do not stamp intent or update PROGRESS when nothing changed. |
-| **Diagnose** | Something is broken, throwing, failing, or slow | Run `fablely-debug` read-only first. Stamp `small: diagnose <symptom>` only before an explicitly authorized mutation; once stamped, it stands through the fix. |
+| **Consult** | Read-only answer, explanation, or investigation | Answer through `fablely-ask-codex`. Run drift detection only when the answer depends on current project state. Do not stamp intent or update PROGRESS when nothing changed. |
+| **Diagnose** | Something is broken, throwing, failing, or slow | Run `fablely-debug-codex` read-only first. Stamp `small: diagnose <symptom>` only before an explicitly authorized mutation; once stamped, it stands through the fix. |
 | **Trivial** | Fully specified mechanical change | Write one `trivial:` line to `.fable/.intent`, execute, verify, update PROGRESS. |
 | **Small** | Contained, reversible, one obvious shape — including a feature or a redesign whose shape is not in question | Write the four-line Intent below, execute, verify, update PROGRESS. |
-| **Medium+** | The shape is genuinely open (several plausible designs), *or* the change is hard to undo: public interface, multiple components, security/data risk, stored-data migration | Create or update one `.fable/work/NNN-slug.md` through `fablely-spec`, then execute its plan. |
+| **Medium+** | The shape is genuinely open (several plausible designs), *or* the change is hard to undo: public interface, multiple components, security/data risk, stored-data migration | Create or update one `.fable/work/NNN-slug.md` through `fablely-spec-codex`, then execute its plan. |
 
 New behavior alone does not make work Medium+. Open shape or irreversibility does. One feature with one obvious shape is Small.
 
@@ -49,7 +49,7 @@ Re-triage both ways. Upward when facts expand the work; downward when they contr
 
 A diagnosed bug is Small by default: the red loop is the done criterion and the minimised repro is the spec. Escalate only when the fix itself is structural.
 
-Consult is a lane, not a preamble: a question answered through `fablely-ask` ends with the answer. If it reveals work worth doing, bring it back here to be sized and stamped rather than sliding from answering into editing.
+Consult is a lane, not a preamble: a question answered through `fablely-ask-codex` ends with the answer. If it reveals work worth doing, bring it back here to be sized and stamped rather than sliding from answering into editing.
 
 ## Intent before mutation
 
@@ -196,4 +196,4 @@ Be concise and outcome-first. State the Intent and material changes of course; p
 - `templates/AGENTS.md.template` — auto-resume contract
 - `templates/fable/` — bootstrap skeletons
 
-Sibling skills: `fablely-ask` answers Consult questions read-only; `fablely-debug` runs the Diagnose lane; `fablely-spec` designs and specs a Medium+ unit. The standalone `/ask` covers questions outside a fablely project and stays user-invoked.
+Sibling skills: `fablely-ask-codex` answers Consult questions read-only; `fablely-debug-codex` runs the Diagnose lane; `fablely-spec-codex` designs and specs a Medium+ unit. The standalone `/ask` covers questions outside a fablely project and stays user-invoked.

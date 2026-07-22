@@ -6,7 +6,7 @@ Before claiming a work unit done, review the unit's diff along three axes: does 
 
 ## Scale by risk
 
-Judge risk the way `fablely-spec` scales its own grilling: data loss possible, auth/security surface, public API, hard to revert, or several plausible shapes → large/risky, the full treatment below. Otherwise → contained Medium, the scoped treatment.
+Judge risk the way `fablely-spec-codex` scales its own grilling: data loss possible, auth/security surface, public API, hard to revert, or several plausible shapes → large/risky, the full treatment below. Otherwise → contained Medium, the scoped treatment.
 
 **Contained Medium unit:** one fresh-eyes review covering all three axes in a single brief — spec↔diff mapping, `STANDARDS.md` clauses, and the smell baseline below. **With permitted subagents:** dispatch one reviewer briefed with every axis's inputs. **Without:** run one cold self-review pass, re-reading the inputs cold, with the same mapping discipline. Report the axes separately under Aggregate.
 

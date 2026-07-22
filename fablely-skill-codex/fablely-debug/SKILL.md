@@ -1,9 +1,9 @@
 ---
-name: fablely-debug
-description: Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/throwing/failing/slow.
+name: fablely-debug-codex
+description: Codex port. Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/throwing/failing/slow.
 ---
 
-# fablely-debug
+# fablely-debug-codex
 
 ## Overview
 
@@ -58,7 +58,7 @@ For performance regressions, logs are usually wrong: establish a baseline measur
 
 ## Phase 5 — Fix + regression test
 
-With the diagnosis in hand, the fix executes under the standing `small: diagnose` intent — extend its `Done when` with the loop command rather than re-stamping. A diagnosed bug is Small however much behavior the fix changes: you already hold what a spec would produce, in stronger form. Only a structural fix — interface change, multiple components, hard to revert — goes to `fablely-spec` for a work unit, with the minimised repro attached.
+With the diagnosis in hand, the fix executes under the standing `small: diagnose` intent — extend its `Done when` with the loop command rather than re-stamping. A diagnosed bug is Small however much behavior the fix changes: you already hold what a spec would produce, in stronger form. Only a structural fix — interface change, multiple components, hard to revert — goes to `fablely-spec-codex` for a work unit, with the minimised repro attached.
 
 Write the regression test **before** the fix — but only at a **correct seam**: one where the test exercises the real bug pattern as it occurs at the call site. Turn the minimised repro into a failing test there, watch it fail, apply the fix, watch it pass, then re-run the Phase 1 loop against the original (un-minimised) scenario.
 
@@ -71,4 +71,4 @@ Before declaring done: original repro re-run and green; regression test passing 
 Capture while it's fresh (in `.fable/` projects):
 
 - A test that lied — passed while the code was broken, or covered only the happy path → `LESSONS.md`, at that moment, not later.
-- Then ask: **what would have prevented this bug?** If the answer is architectural — no good test seam, tangled callers, hidden coupling — recommend `/fablely-arch` with the specifics. Make the recommendation after the fix is in, not before: you know more now than when you started.
+- Then ask: **what would have prevented this bug?** If the answer is architectural — no good test seam, tangled callers, hidden coupling — recommend `/fablely-arch-codex` with the specifics. Make the recommendation after the fix is in, not before: you know more now than when you started.

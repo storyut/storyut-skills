@@ -1,11 +1,11 @@
 ---
-name: fablely-arch
-description: Scan a fablely project for deepening opportunities — refactors that turn shallow modules into deep ones — present ranked candidates, and hand the chosen one to fablely-spec.
+name: fablely-arch-codex
+description: Codex port. Scan a fablely project for deepening opportunities — refactors that turn shallow modules into deep ones — present ranked candidates, and hand the chosen one to fablely-spec-codex.
 ---
 
-# fablely-arch
+# fablely-arch-codex
 
-Surface architectural friction and propose **deepening opportunities** — refactors that put more behaviour behind smaller interfaces. The aim is testability and navigability. You scan and propose; design belongs to `fablely-spec` and execution to the fablely work-unit lifecycle.
+Surface architectural friction and propose **deepening opportunities** — refactors that put more behaviour behind smaller interfaces. The aim is testability and navigability. You scan and propose; design belongs to `fablely-spec-codex` and execution to the fablely work-unit lifecycle.
 
 ## Vocabulary
 
@@ -63,10 +63,10 @@ Use the project's own names from MISSION/MAP for the domain and the vocabulary a
 
 End with the one candidate you'd tackle first and why, then ask which the user wants to explore. Do **not** propose concrete interfaces yet — that's design work, and it happens in the grilling.
 
-**CHECKPOINT · STOP:** wait for the user to select a candidate. Do not enter `fablely-spec`, write a DECISIONS entry, or mutate project files before that selection.
+**CHECKPOINT · STOP:** wait for the user to select a candidate. Do not enter `fablely-spec-codex`, write a DECISIONS entry, or mutate project files before that selection.
 
 ### 3. Handoff
 
-The chosen candidate goes to `fablely-spec`, which grills the design — constraints, the shape of the deepened module, what sits behind the seam, which tests survive — and writes the work unit. Execution then follows the fablely lifecycle.
+The chosen candidate goes to `fablely-spec-codex`, which grills the design — constraints, the shape of the deepened module, what sits behind the seam, which tests survive — and writes the work unit. Execution then follows the fablely lifecycle.
 
 When the user rejects a candidate for a load-bearing reason, offer to append it to `DECISIONS.md` so future scans don't re-suggest it. Skip ephemeral reasons ("not worth it right now") and self-evident ones.

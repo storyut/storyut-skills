@@ -18,7 +18,7 @@ npx skills add storyut/storyut-skills
 npx skills add storyut/storyut-skills --skill 'tldr,brew' --global
 ```
 
-18 个 skill 全部对外暴露，两套 fablely 都在内。Codex 移植版用带 `-codex` 后缀的名字发布（`fablely-codex`、`fablely-spec-codex`……），所以可以和 Claude Code 原版并存，不会互相顶掉。
+19 个 skill 全部对外暴露，两套 fablely 都在内。Codex 移植版用带 `-codex` 后缀的名字发布（`fablely-codex`、`fablely-spec-codex`……），所以可以和 Claude Code 原版并存，不会互相顶掉。
 
 其实也可以不用装。文件本身就是成品，clone 下来复制过去一样能跑：
 
@@ -66,6 +66,7 @@ fablely 的整个前提是项目状态存在磁盘上，不在上下文窗口里
 | [`brainstorm`](brainstorm/SKILL.md) | 五五开的头脑风暴。agent 出大约一半的点子，轮流来，收敛之前不做评判。`--deep` 会加一轮并行的静默发散；`--auto` 把生成那一半整个接过去。 |
 | [`fable-prompter`](fable-prompter/SKILL.md) | 把一个含糊的念头（"给这堆数据做点什么"）变成能上生产的 Claude Fable 5 提示词。含糊是预期输入，不是拿来抱怨的。 |
 | [`be-a-human-zh`](be-a-human-zh/SKILL.md) | 写、改、重写中文，消灭 AI 味。硬性禁用词规则，不靠感觉。 |
+| [`be-a-human-en`](be-a-human-en/SKILL.md) | 同一套思路的英文版，禁用清单是英文自己的那些毛病：破折号、"it's not just X, it's Y"、delve、三段式。不是中文版的翻译。 |
 
 ### 日常
 

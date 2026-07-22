@@ -18,7 +18,7 @@ Or take specific ones, globally instead of per-project:
 npx skills add storyut/storyut-skills --skill 'tldr,brew' --global
 ```
 
-All 18 skills are exposed, including both fablely families. The Codex port is published under `-codex`-suffixed names (`fablely-codex`, `fablely-spec-codex`, …) so it installs alongside the Claude Code originals without colliding.
+All 19 skills are exposed, including both fablely families. The Codex port is published under `-codex`-suffixed names (`fablely-codex`, `fablely-spec-codex`, …) so it installs alongside the Claude Code originals without colliding.
 
 You don't need the installer either. The files are the product, so cloning and copying works just as well:
 
@@ -66,6 +66,7 @@ What differs is only what has to. The Codex port is restructured for GPT-5.6 (ou
 | [`brainstorm`](brainstorm/SKILL.md) | A 50/50 brainstorm. The agent generates roughly half the ideas, in alternating turns, with no judgment until convergence. `--deep` adds a parallel silent-divergence phase; `--auto` hands the whole generation half over. |
 | [`fable-prompter`](fable-prompter/SKILL.md) | Turns a vague idea ("build me something for the data") into a production prompt for Claude Fable 5. Fog is expected input rather than a complaint. |
 | [`be-a-human-zh`](be-a-human-zh/SKILL.md) | 写、改、重写中文，消灭 AI 味。Hard banned-phrase rules rather than vibes. |
+| [`be-a-human-en`](be-a-human-en/SKILL.md) | The same idea for English, with its own list of tells: em dashes, "it's not just X, it's Y", delve, the rule of three. Not a translation of the Chinese one. |
 
 ### Everyday
 

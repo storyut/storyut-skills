@@ -1,6 +1,7 @@
 ---
 name: brew
 description: Write a new agent skill, brew an existing one down to the fewest tokens that hold its behaviour, or patch a skill from an observed failed run. Use when the user asks to create, draft, design, audit, compress, repair, or learn from a misbehaving skill.
+disable-model-invocation: true
 ---
 
 Goal: **predictability** — the same process each run, not the same output. Keep the fewest tokens that hold it.
@@ -34,7 +35,7 @@ Choose before writing; this allocates the tokens.
 
 ## 4. Draft long, then brew
 
-Write the skill fully, then run these passes **in order** from safest to riskiest.
+Draft without writing the target, then run these passes **in order** from safest to riskiest.
 
 1. **Delete, don't rewrite.** Apply the **no-op** test to each sentence alone: does it change behaviour versus the model default? Delete failures whole. Rebuild structure freely.
 2. **Cut what the reader already has.** Delete domain background, common formats and tools, standard-practice rationale, motivation, transitions, and narrative. Keep non-default conventions, order, and constraints.
@@ -45,10 +46,14 @@ Write the skill fully, then run these passes **in order** from safest to riskies
 7. **Stop at the floor.** Restore a cut when the agent asks what the skill used to answer or two runs diverge within one branch. Restore a concrete example before prose.
 8. **Tighten surviving prose.** Last, apply the [`prose edits`](REFERENCE.md#prose-edits): bullets unless connective logic carries behaviour; delete qualifiers and implied modifiers; unwind preposition chains; flip negatives positive; put the doer first. Re-run the no-op test; restore wording when behaviour moved.
 
-Budget: SKILL.md ≤1000 tokens (~650 words); 500 lines is a ceiling. If pass 7 holds above budget, split or disclose. Report before → after tokens and percentage cut.
+Budget: SKILL.md ≤1000 tokens (~650 words); 500 lines is a ceiling. If pass 7 holds above budget, split or disclose.
 
-## 5. Deliver
+## 5. Preview · STOP
 
-Write to the path the user gave, or show inline if they gave none.
+Before writing any file, show the exact proposed diff, each SKILL.md's measured `before → proposed after` tokens and percentage change, and every brew cut as `line N — <pass> — <what would go>`. A from-zero rebuild lists lost behaviour instead. End with `APPROVAL REQUIRED · STOP`; wait for explicit approval. Approval covers only that diff: re-preview material changes. Touch no target, support, or progress file before approval.
 
-**Completion criterion:** valid frontmatter; every sentence passes the no-op test alone; no duplicated meaning; each step ends on a checkable bound; one notation; SKILL.md ≤1000 tokens or pass 7 justifies the overage; token delta reported. Brew also reports each cut as `line N — <pass> — <what went>` for veto. A from-zero rebuild instead reports what the old skill did that the new one does not.
+## 6. Deliver
+
+After approval, apply the previewed diff, validate, and report the measured token delta. Write to the given path, or show inline when absent.
+
+**Completion criterion:** only the approved diff applied; valid frontmatter; every sentence passes the no-op test; no duplicated meaning; checkable bounds; one notation; SKILL.md ≤1000 tokens or pass 7 justifies the overage; actual token delta reported.

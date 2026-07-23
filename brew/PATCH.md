@@ -37,14 +37,20 @@ Write two regression scenarios before editing:
 
 **Completion criterion:** the proposed wording distinguishes both scenarios without contradicting another branch.
 
-## 4. Apply and replay
+## 4. Preview · STOP
 
-Edit the skill, its directly affected references, and required repo metadata. Replay both scenarios with the same harness when available; otherwise trace each scenario through the written steps and label that check a dry run. If either fails, revise the diagnosis before revising the wording.
+Return to the preview gate in [`SKILL.md`](SKILL.md#5-preview--stop). Include both regression scenarios with the proposed diff. Do not edit before approval.
+
+**Completion criterion:** the user can approve or veto the diagnosis, exact wording, and either regression independently.
+
+## 5. Apply and replay
+
+After approval, apply only the previewed patch and required repo metadata. Replay both scenarios with the same harness when available; otherwise trace each through the written steps and label that check a dry run. If either fails, revise the diagnosis before revising the wording.
 
 **Completion criterion:** both scenarios pass; the skill remains valid; unrelated behaviour and invocation are unchanged.
 
-## 5. Report
+## 6. Report
 
 Return `evidence → cause → patch → regressions`, name any uncertainty, and distinguish replayed checks from dry runs. Report changed files and token delta. Do not claim the skill learned autonomously: the durable change is the patch.
 
-**Completion criterion:** the user can veto the diagnosis, wording, or either regression independently.
+**Completion criterion:** the report matches the approved patch and observed checks.

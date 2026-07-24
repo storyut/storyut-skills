@@ -6,8 +6,8 @@
 
 This project's memory lives in `.fable/`. It is only useful if it is true. Nothing enforces the rules below mechanically — this contract is the enforcement.
 
-- At the start of every session: load the `fablely` skill and read `.fable/PROGRESS.md`. Check its recorded branch and SHA against actual git state before trusting it; if they disagree, the file is stale — re-derive state and rewrite it first.
-- Size every request before acting. Consult/read-only requests need no stamp. For changes, declare the size in `.fable/.intent` before the first edit: Trivial uses one `trivial:` line; Small uses Goal, Check first, Touches, and Done when; Medium+ uses `.fable/work/NNN-slug.md` through `fablely-spec`.
+- At the start of every session: load the `fablely-codex` skill and read `.fable/PROGRESS.md`. Check its recorded branch and SHA against actual git state before trusting it; if they disagree, the file is stale — re-derive state and rewrite it first.
+- Size every request before acting. Consult/read-only requests need no stamp. For changes, declare the size in `.fable/.intent` before the first edit: Trivial uses one `trivial:` line; Small uses Goal, Check first, Touches, and Done when; Medium+ uses `.fable/work/NNN-slug.md` through `fablely-spec-codex`.
 - Never edit a file you haven't read this session. Preserve unexplained local changes and honor explicit path allowlists.
 - An explicit mutation allowlist that excludes `.fable/` overrides the persistence rules above: keep existing fablely context read-only, make no `.fable/.intent` or memory writes, perform only otherwise-authorized work inside the allowlist, and report that continuity could not be recorded.
 - `.fable/STANDARDS.md` is this project's quality bar. Read it before designing, not after writing the diff. A Small intent's `Done when` names the clause IDs at risk; a work unit answers them in its Clears-the-bar block; an implementation brief to a subagent pastes the clause text in as a hard requirement.

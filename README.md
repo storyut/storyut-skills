@@ -43,7 +43,7 @@ fablely fixes that by keeping truthful state on disk in a `.fable/` directory, u
 | [`fablely`](fablely-skill/fablely/SKILL.md) | The orchestrator. Triages incoming requests by size, runs the work-unit lifecycle, enforces intent-before-edit and PROGRESS-before-stop. Bootstraps `.fable/` into a project, or adopts an existing one. |
 | [`fablely-spec`](fablely-skill/fablely-spec/SKILL.md) | Turns a fuzzy request into one settled file: design, spec, and plan together. It grills you; it does not execute. |
 | [`fablely-arch`](fablely-skill/fablely-arch/SKILL.md) | Scans for *deepening opportunities*: refactors that put more behaviour behind smaller interfaces. Proposes ranked candidates, hands the chosen one to `fablely-spec`. |
-| [`fablely-ask`](fablely-skill/fablely-ask/SKILL.md) | The Consult lane. Answers questions about the project and touches nothing: no intent stamp, no PROGRESS write, no edits. |
+| [`fablely-ask`](fablely-skill/fablely-ask/SKILL.md) | User-invoked Consult shortcut. Answers questions about the project and touches nothing: no intent stamp, no PROGRESS write, no edits. |
 | [`fablely-debug`](fablely-skill/fablely-debug/SKILL.md) | A diagnosis loop for hard bugs and perf regressions: build a tight feedback loop first, then spend it on bisection and hypotheses. Works standalone; plugs into fablely when `.fable/` exists. |
 
 Projects get a `.fable/STANDARDS.md`, the quality bar as numbered clauses (`SEC-1`, `ERR-2`) that are referenced while the work is being *designed*, not applied as a gate afterward. An open finding blocks the unit until it's fixed or waived by an auditable `DECISIONS.md` entry.
@@ -56,7 +56,7 @@ The whole premise of fablely is that project state lives on disk, not in a conte
 
 So `.fable/` is treated as a frozen, harness-neutral format, and both ports read and write it identically. A project bootstrapped by Claude Code resumes cleanly under Codex and vice versa. You can switch mid-project, or use whichever one is better at the task in front of you, without losing the thread.
 
-What differs is only what has to. The Codex port is restructured for GPT-5.6 (outcome-first, decision rules over scaffolding, roughly a third shorter), and Codex has no lifecycle hooks, so guarantees that ride on hooks in Claude Code ride on `AGENTS.md` prose instead. Behaviour is ported; the wording is not. The divergences are deliberate and [documented](fablely-skill-codex/README.md).
+What differs is only what has to. Both families use the same token discipline; the Codex port keeps GPT-5.6-oriented outcome-first ordering and decision rules, while Claude Code retains its hook-specific instructions. Codex has no lifecycle hooks, so guarantees that ride on hooks in Claude Code ride on `AGENTS.md` prose instead. Behaviour is ported; the wording is not. The divergences are deliberate and [documented](fablely-skill-codex/README.md).
 
 ### Writing and thinking
 

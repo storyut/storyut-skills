@@ -23,7 +23,7 @@ The five skills are published under `-codex`-suffixed names — `fablely-codex`,
 
    Without this, fablely still works — it falls back to inline implementation with a spec-vs-diff self-review instead of a reviewer subagent.
 
-3. Invoke with `/fablely-codex` in a project directory (or `/fablely-spec-codex` to spec a unit of work directly). Projects bootstrapped by fablely get an `AGENTS.md` that tells every future Codex session to load the skill and read `.fable/PROGRESS.md` automatically.
+3. Invoke with `/fablely-codex` in a project directory (or `/fablely-spec-codex` to spec a unit directly, `/fablely-ask-codex` for an explicit read-only Consult). Projects bootstrapped by fablely get an `AGENTS.md` that tells every future Codex session to load the skill and read `.fable/PROGRESS.md` automatically.
 
 ## What changed from the Claude Code version
 
@@ -31,7 +31,7 @@ The five skills are published under `-codex`-suffixed names — `fablely-codex`,
 - **`CLAUDE.md.template` → `AGENTS.md.template`.** Bootstrap writes `AGENTS.md`; Adopt appends the contract section to an existing one.
 - **`.fable/.session-start` dropped** (it only served the hooks). `.fable/.intent` is kept as the auditable per-task size declaration.
 - **Delegation is conditional.** With `multi_agent = true`, fablely orchestrates and dispatches implementation to subagents as before; without it, it works inline under the same discipline, and the fresh-eyes reviewer degrades to a strict spec↔diff mapping self-review.
-- **Prose restructured for GPT-5.6:** outcome-first sections with success criteria, decision rules instead of repeated absolutes, red-flag tables compressed, roughly a third shorter — behavioral rules preserved.
+- **Prose is harness-adapted, not line-mirrored.** Both families follow the same token discipline; Codex keeps outcome-first ordering and decision rules suited to GPT-5.6. Behavioral rules stay synchronized while wording may differ.
 - **`.fable/` format is unchanged.** Projects are fully interoperable with the Claude Code version of fablely: either harness can resume or adopt a project the other bootstrapped.
 
 ## The standards bar

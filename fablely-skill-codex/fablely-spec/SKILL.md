@@ -1,77 +1,53 @@
 ---
 name: fablely-spec-codex
-description: Codex port. Use when a project with a .fable/ directory needs a unit of work designed and specced — a non-trivial request with no covering file in .fable/work/ — or when the user asks to grill or spec a piece of work with /fablely-spec-codex.
+description: Codex port. Design and spec Medium+ work in a fablely project when the solution shape is open or hard to undo, no covering `.fable/work/` file exists, or the user explicitly asks to grill/spec the work.
 ---
 
 # fablely-spec-codex
 
-## Goal
+Turn one fuzzy unit into one agreed `.fable/work/NNN-slug.md` containing Design, Spec, Clears the bar, and Plan. Grill; never implement. The artifact is authoritative only after the user confirms it.
 
-One job: turn a fuzzy unit of work into one settled file, `.fable/work/NNN-slug.md`, holding the design, the spec, and the implementation plan together. You grill; you do not execute.
+## 1. Scale by risk
 
-You're invoked by fablely's triage when a Medium+ request has no covering work file, or directly by the user via `/fablely-spec-codex`. Either way, the work isn't real until it's written down and agreed to — not before.
+- **Return to Small:** if the shape settles before a second question, hand it back to fablely triage; write no work file.
+- **Light:** contained, reversible, one plausible shape. Propose the whole design once. File: Design ≤3 lines plus rejected alternative; behavioral Spec; one Clears-the-bar row or `none at risk`; flat checkbox Plan. No Task/Interfaces or per-step run/expect blocks.
+- **Full:** data-loss, auth/security, public API, hard-to-revert, or several plausible shapes. Run the full interrogation and output contract.
 
-## Scale the artifact to the risk
+If confirmation is unavailable, write `status: specced` and stop. Silence never authorizes implementation.
 
-Judge risk by observable properties — blast radius, reversibility, how much design is genuinely open. Both the grilling **and the file it produces** scale:
+**Completion criterion:** chosen form matches blast radius, reversibility, and remaining design freedom.
 
-- **Hand it back.** If the design settles before you have asked a second question, this was never Medium+. Say so and return it to fablely's triage as Small. You are not obliged to produce a file for every request that reaches you, and a work file for a settled change is pure ceremony.
-- **Light** (contained, revertible, one plausible shape): propose the complete design in a single message and ask the user to correct it. One round-trip if it lands, then the light file: Design ≤ 3 lines naming the alternative you rejected; Spec = the behavioral done criterion; one Clears-the-bar row or `none at risk`; Plan = a flat checkbox list. No Task headers, no Interfaces blocks, no per-step run/expect pairs.
-- **Full** (data loss possible, auth/security surface, public API, hard to revert, several plausible shapes): run the interrogation loop below and the full Output contract. This is where the friction pays for itself.
+## 2. Settle the design
 
-If the user cannot confirm — a non-interactive run, an autonomous session — write the file, mark it `status: specced`, and stop there with the file as your report. Implementing an unconfirmed spec is self-approval; "the user wasn't available" doesn't convert silence into a yes.
+Ask one question at a time; recommend an answer. Resolve dependent decisions branch by branch. Inspect the codebase instead of asking questions it can answer. Continue while new branches appear.
 
-## The interrogation loop
+Settle:
 
-Interview the user about every aspect of the work until you reach shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one by one before moving to the next branch.
+- solution shape, constraints, alternatives, and why they lost
+- exact observable behavior and edge cases
+- a manual behavioral done criterion
+- bite-sized implementation order
 
-- Ask questions one at a time, waiting for the answer before continuing — the user can't hold five open decisions in their head while answering the first one.
-- For every question, offer your recommended answer. Give the user something to react to or override, not a blank page.
-- If the codebase can answer a question, explore the codebase instead of asking.
-- Do not write the work file until the user confirms shared understanding. If you're still surfacing new branches of the design tree, keep interrogating.
+Read `.fable/STANDARDS.md` before proposing the shape. For every clause at risk, grill a **Clears the bar** row containing: clause ID, how the design satisfies it, and how a reviewer checks that from the diff. Auth, input, stored data, errors, and public interfaces rarely justify `none at risk`. If no acceptable shape clears a clause, change the design or obtain a waiver recorded in DECISIONS; never defer the conflict to review.
 
-Cover, at minimum: what shape the solution takes and what alternatives were rejected and why; exact observable behavior including edge cases; what "done" looks like when someone drives the flow by hand; and the sequence of bite-sized steps that gets there.
+**Completion criterion:** no open design branch; behavior is falsifiable; each at-risk clause has a diff-checkable answer.
 
-## Clearing the bar is part of the design
+## 3. Research only what the tree cannot answer
 
-Read `.fable/STANDARDS.md` before you propose a shape — it is a design input, not a checklist run against the finished spec. A design that ignores the bar until review has already picked the shape that will fail it.
+Use primary sources for external facts. Delegate only when `[features] multi_agent = true`, permitted, and available; otherwise research inline and do not imply an agent ran. Keep unconfirmed research read-only. Persist `.fable/research/<slug>.md` only after design confirmation or explicit artifact authority, preceded by `unit: NNN <slug>`; follow the fablely schema and cite the file from Design rather than duplicating it.
 
-Every work file carries a **Clears the bar** block: for each clause the unit puts at risk, the ID, how the design satisfies it, and how a reviewer will check that from the diff alone. Grill the block like any other part of the design, before the file is accepted:
+## 4. Write the work file
 
-- Which clauses does this actually put at risk? Anything touching input, auth, stored data, error paths, or a public interface almost certainly touches one. A block claiming "none at risk" on that kind of work is the first thing to push on.
-- "How a reviewer checks" has to be checkable from the diff. "Handled correctly" is not an answer; "the parse happens in `handler.parse_request`, so no unvalidated field reaches the service layer" is.
-- If no shape you both like can satisfy a clause, that is a design finding, not a review finding. Resolve it here — change the shape, or agree the clause is waived and record it in `DECISIONS.md` naming the clause. Deferring it to review means discovering it after the code exists, which is the expensive time to discover it.
+Choose the next unused zero-padded number from `.fable/work/`. Follow `../fablely/references/schemas.md` exactly. Full form, in order:
 
-This block is what the standards reviewer is tested against later, and what gets pasted into an implementation brief. A vague block produces vague implementation and an unreviewable diff.
+1. `status: specced`, creation date, number
+2. **Design:** chosen shape and rejected alternatives
+3. **Spec:** observable behavior, edge cases, behavioral done criterion—not merely tests/build
+4. **Clears the bar:** at-risk clauses, satisfaction, diff check
+5. **Plan:** risk-scaled, test-first, independently checkable steps
 
-## Research
+Use `references/plan-format.md` as the Plan source of truth: exact paths, interfaces, input→result cases, commands, and expected output; contracts by default, literal code only when a costly wrong guess is plausible. Keep Design, Spec, and Plan in this one file. Plans live nowhere else.
 
-When a design question turns on facts outside the tree — library behavior, API contracts, prior art — investigate rather than guess: with subagents available and permitted, dispatch a background research agent; otherwise do the reading yourself before continuing the interrogation. Do not imply delegation occurred when research ran inline. Either path uses primary sources (official docs, source code, specs — not secondary write-ups).
+Run plan-format's self-review, show the complete file, and obtain confirmation. Do not implement. After confirmation, return execution to fablely's work-unit lifecycle.
 
-Research stays read-only during unconfirmed design work. Persist findings to `.fable/research/<slug>.md` only after the design is confirmed or the user explicitly authorizes a persistent research artifact; before that first write, satisfy fablely's intent rule with `unit: NNN <slug>`. Use one file per investigation, cite every claim's primary source, follow fablely's `references/schemas.md`, and cite the file from the work unit's Design section instead of restating it. If the codebase can answer the question, read the codebase — research is for facts that live outside the tree.
-
-## Output contract
-
-The file is `.fable/work/NNN-slug.md`, where `NNN` is the next unused number (zero-padded, starting at `001`) and `slug` is a short kebab-case name. Check `.fable/work/` for the highest existing number first.
-
-In full form it contains, in order (light form collapses 2–5 as above):
-
-1. **Status header** — `status: specced`, the date created, and the work unit number.
-2. **Design** — the shape you chose, and the alternatives you considered along with why they lost.
-3. **Spec** — exact observable behavior, edge cases, and done criteria. The done criterion is behavioral: drive the affected flow and observe the result — not "tests pass" or "code compiles."
-4. **Clears the bar** — the `STANDARDS.md` clauses at risk, how the design satisfies each, and how a reviewer checks it from the diff.
-5. **Plan** — bite-sized, independently checkable steps with test-first ordering, exact paths, exact commands, and expected output. Depth is risk-scaled: contracts (exact signatures, concrete test cases, expected output) by default, literal code only where a wrong guess would be expensive. Write it for an engineer with zero context and questionable taste; the full format is in `references/plan-format.md` and it is not optional.
-
-Design, spec, and plan live in one file deliberately — split across files they drift into contradicting each other the first time either one gets edited alone.
-
-The full schema is in the `fablely-codex` skill's `references/schemas.md`. Follow it exactly; this document describes the shape, that file is the source of truth for field names and formatting.
-
-## Handoff
-
-Once the file is written and the user has confirmed it, your job is done. Execution belongs to the `fablely-codex` skill's work unit lifecycle — load-and-critique, step-by-step execution, review against the Spec and the standards bar, then the checkpoint commit: one per completed work unit, tests green, standards axis clear, never on the default branch, never pushed.
-
-You do not implement anything yourself. If you find your hands moving toward an edit while specced work is still open, stop — that's the execution phase's job, not yours.
-
-## One home for plans
-
-Plans live in `.fable/work/`, nowhere else. Do not reach for any other plan-writing workflow or write plans to any other location — two plan locations is how a project ends up with contradictory plans a few directories apart, each claiming to be current. Everything needed to write a fablely plan is in this skill and `references/plan-format.md`.
+**Completion criterion:** one confirmed work file; schema exact; every Spec line and bar clause maps to a Plan step; no placeholders or unsupported code transcript; no edits outside authorized spec/research artifacts.
